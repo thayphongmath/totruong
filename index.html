@@ -1,202 +1,294 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thi Đua Tổ (TT1 - TT4)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
-            padding: 15px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-            background-color: white;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e0e0e0;
+        }
+
         h1 {
-            font-size: 1.8em;
+            font-size: 2em;
             text-align: center;
-            color: #a00000;
-            font-weight: bold;
-            margin: 0 0 15px 0;
-        }
-        h2 {
-            font-size: 1.3em;
-            text-align: center;
-            color: #00008B; /* Xanh dương đậm */
-            font-weight: bold;
+            color: #c62828;
+            font-weight: 700;
             margin: 0 0 20px 0;
+            letter-spacing: 0.5px;
         }
+
+        h2 {
+            font-size: 1.5em;
+            text-align: center;
+            color: #1a237e;
+            font-weight: 500;
+            margin: 0 0 25px 0;
+        }
+
         .team-buttons {
             display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 20px;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
         }
+
         .team-button {
             flex: 1;
             padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            background-color: #e0e0e0;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #e0e0e0, #f5f5f5);
             cursor: pointer;
             font-size: 1em;
-            text-align: center;
-            transition: background-color 0.3s;
-        }
-        .team-button.selected {
-            background-color: #00ff00;
-            color: white;
-            border-color: #00cc00;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            font-size: 0.95em;
-            color: #006400; /* Xanh đậm */
             font-weight: 500;
             text-align: center;
-            margin-bottom: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
+        .team-button:hover {
+            background: linear-gradient(45deg, #d0d0d0, #e5e5e5);
+            transform: translateY(-2px);
+        }
+
+        .team-button.selected {
+            background: linear-gradient(45deg, #ab47bc, #8e24aa);
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(142, 36, 170, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 1em;
+            color: #d81b60;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
         input {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            padding: 12px;
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
             box-sizing: border-box;
-            font-size: 0.95em;
-            background-color: #f9f9f9;
+            font-size: 1em;
+            background: #fafafa;
+            transition: all 0.3s ease;
         }
+
         input:focus {
             outline: none;
-            border-color: #007bff;
-            background-color: white;
+            border-color: #0288d1;
+            background: #ffffff;
+            box-shadow: 0 0 8px rgba(2, 136, 209, 0.2);
         }
+
         button[type="submit"] {
             width: 100%;
-            padding: 12px;
-            background-color: #007bff;
-            color: white;
+            padding: 14px;
+            background: linear-gradient(45deg, #0288d1, #0277bd);
+            color: #ffffff;
             border: none;
-            border-radius: 6px;
-            font-size: 1em;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 500;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(2, 136, 209, 0.3);
         }
+
         button[type="submit"]:hover:not(:disabled) {
-            background-color: #0056b3;
+            background: linear-gradient(45deg, #0277bd, #01579b);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(2, 136, 209, 0.4);
         }
+
         button[type="submit"]:disabled {
-            background-color: #cccccc;
+            background: #b0bec5;
             cursor: not-allowed;
+            box-shadow: none;
         }
+
         #week_date_range {
-            font-size: 0.9em;
-            color: #555;
+            font-size: 0.95em;
+            color: #37474f;
             text-align: center;
-            margin-top: 5px;
+            margin-top: 8px;
             display: block;
+            font-style: italic;
         }
+
+        .action-group {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .action-group label {
+            display: inline-flex;
+            align-items: center;
+            font-size: 1em;
+            color: #2e7d32;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .action-group input {
+            width: auto;
+            margin-right: 8px;
+        }
+
         @media (max-width: 600px) {
-            h1 {
-                font-size: 1.5em;
-            }
-            h2 {
-                font-size: 1.1em;
-            }
-            .team-button {
-                font-size: 0.9em;
+            body {
                 padding: 10px;
             }
-            input, button[type="submit"] {
-                font-size: 0.9em;
-                padding: 8px;
+
+            .container {
+                padding: 20px;
             }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            .team-button {
+                font-size: 0.95em;
+                padding: 10px;
+            }
+
+            input,
+            button[type="submit"] {
+                font-size: 0.95em;
+                padding: 10px;
+            }
+
             .team-buttons {
-                gap: 8px;
+                gap: 10px;
             }
+
+            .action-group {
+                gap: 15px;
+            }
+
             label {
-                font-size: 0.9em;
+                font-size: 0.95em;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>DÀNH CHO CÁC TỔ TRƯỞNG (TT1-TT4)</h1>
-        <h2 id="teamName">Tổ TT1</h2>
+        <h2 id="teamName">Vui lòng chọn tổ</h2>
         <div class="team-buttons">
-            <button type="button" class="team-button selected" onclick="selectTeam('TT1')">TT1</button>
+            <button type="button" class="team-button" onclick="selectTeam('TT1')">TT1</button>
             <button type="button" class="team-button" onclick="selectTeam('TT2')">TT2</button>
             <button type="button" class="team-button" onclick="selectTeam('TT3')">TT3</button>
             <button type="button" class="team-button" onclick="selectTeam('TT4')">TT4</button>
         </div>
-        <form id="teamForm" action="https://script.google.com/macros/s/AKfycbx7V8Tkmh9dmXBi-haYgM5xr6hNJ8rE-l4venAOx-VwUvh9vlnJQW-7qE4eirgsN48h/exec" method="POST">
-            <input type="hidden" id="team" name="team" value="TT1">
+        <form id="teamForm"
+            action="https://script.google.com/macros/s/AKfycbzfGYV1a4NPmEwEljHQsFYf8EF5ckPj7iBkdR8F1fZSGIhYyJeiYWA25fUsLH9a1kAegQ/exec"
+            method="POST">
+            <input type="hidden" id="team" name="team" value="">
+            <div class="form-group action-group">
+                <label><input type="radio" name="action" value="add" checked> Ghi mới (Tuần mới)</label>
+                <label><input type="radio" name="action" value="append"> Bổ sung (Tên HS thiếu)</label>
+                <label><input type="radio" name="action" value="edit"> Chỉnh sửa (Tuần cũ)</label>
+            </div>
             <div class="form-group">
-                <label for="week">TUẦN THỨ (NHẬP CHÍNH XÁC)- XEM NGÀY</label>
+                <label for="week">TUẦN THỨ (PHẢI NHẬP CHÍNH XÁC)</label>
                 <input type="number" id="week" name="week" min="1" max="35" required oninput="updateWeekDateRange()">
                 <span id="week_date_range"></span>
                 <input type="hidden" id="week_date_range_input" name="week_date_range">
             </div>
             <div class="form-group">
-                <label for="not_prepared_names">Không thuộc bài (Tên HS):</label>
-                <input type="text" id="not_prepared_names" name="not_prepared_names" placeholder="Ví dụ: Ngân(SINH), Thân(TOÁN),...">
-                <label for="not_prepared_count">Tổng số lượng:</label>
+                <label for="not_prepared_names">1. Không thuộc bài (Tên HS):</label>
+                <input type="text" id="not_prepared_names" name="not_prepared_names"
+                    placeholder="Ví dụ: Ngân(SINH), Thân(TOÁN),...">
+                <label for="not_prepared_count">Tổng số lượt:</label>
                 <input type="number" id="not_prepared_count" name="not_prepared_count" min="0">
             </div>
             <div class="form-group">
-                <label for="no_homework_names">Không làm BTVN (Tên HS):</label>
-                <input type="text" id="no_homework_names" name="no_homework_names" placeholder="Ví dụ: Ngân(TOÁN), Thân(VĂN)">
-                <label for="no_homework_count">Tổng số lượng:</label>
+                <label for="no_homework_names">2. Không làm BTVN (Tên HS):</label>
+                <input type="text" id="no_homework_names" name="no_homework_names"
+                    placeholder="Ví dụ: Ngân(TOÁN), Thân(VĂN)">
+                <label for="no_homework_count">Tổng số lượt:</label>
                 <input type="number" id="no_homework_count" name="no_homework_count" min="0">
             </div>
             <div class="form-group">
-                <label for="disorder_names">Mất trật tự (Tên HS):</label>
-                <input type="text" id="disorder_names" name="disorder_names" placeholder="Ví dụ: Ngân(8/9-TOÁN), Thân(9/9-VĂN)">
-                <label for="disorder_count">Tổng số lượng:</label>
+                <label for="disorder_names">3. Mất trật tự (Tên HS):</label>
+                <input type="text" id="disorder_names" name="disorder_names"
+                    placeholder="Ví dụ: Ngân(8/9-TOÁN), Thân(9/9-VĂN)">
+                <label for="disorder_count">Tổng số lượt:</label>
                 <input type="number" id="disorder_count" name="disorder_count" min="0">
             </div>
             <div class="form-group">
-                <label for="late_names">Đi trễ (Tên HS và ngày):</label>
+                <label for="late_names">4. Đi trễ (Tên HS và ngày):</label>
                 <input type="text" id="late_names" name="late_names" placeholder="Ví dụ: Ngân (28/9), Thân (8/9)">
-                <label for="late_count">Tổng số lượng:</label>
+                <label for="late_count">Tổng số lượt:</label>
                 <input type="number" id="late_count" name="late_count" min="0">
             </div>
             <div class="form-group">
-                <label for="violation_names">Vi phạm Đoàn (Tên HS và chi tiết):</label>
-                <input type="text" id="violation_names" name="violation_names" placeholder="Ví dụ: Ngân (son môi), Thân (giày dép)">
-                <label for="violation_count">Tổng số lượng:</label>
+                <label for="violation_names">5. Vi phạm Đoàn (Tên HS và chi tiết):</label>
+                <input type="text" id="violation_names" name="violation_names"
+                    placeholder="Ví dụ: Ngân (son môi), Thân (giày dép)">
+                <label for="violation_count">Tổng số lượt:</label>
                 <input type="number" id="violation_count" name="violation_count" min="0">
             </div>
             <div class="form-group">
-                <label for="absent_names">Vắng (Tên HS):</label>
+                <label for="absent_names">6. Vắng (Tên HS):</label>
                 <input type="text" id="absent_names" name="absent_names" placeholder="Ví dụ: Ngân(8/9), Thân(9/9)">
-                <label for="absent_count">Tổng số lượng:</label>
+                <label for="absent_count">Tổng số lượt:</label>
                 <input type="number" id="absent_count" name="absent_count" min="0">
             </div>
             <div class="form-group">
-                <label for="good_points_names">Điểm tốt (Tên HS):</label>
-                <input type="text" id="good_points_names" name="good_points_names" placeholder="Ví dụ: Như(8/9), Hân(9/9)">
-                <label for="good_points_count">Tổng số lượng:</label>
+                <label for="good_points_names">7. Điểm tốt từ 9 trở lên (Tên HS):</label>
+                <input type="text" id="good_points_names" name="good_points_names"
+                    placeholder="Ví dụ: Như(4 lượt), Hân(7 lượt)">
+                <label for="good_points_count">Tổng số lượt:</label>
                 <input type="number" id="good_points_count" name="good_points_count" min="0">
             </div>
             <div class="form-group">
-                <label for="participation_names">Phát biểu (Tên HS):</label>
-                <input type="text" id="participation_names" name="participation_names" placeholder="Ví dụ: Ban(8/9), Tha(9/9)">
-                <label for="participation_count">Tổng số lượng:</label>
+                <label for="participation_names">8. Phát biểu xung phong (Tên HS):</label>
+                <input type="text" id="participation_names" name="participation_names"
+                    placeholder="Ví dụ: Ban(10 lượt), Tha(6 lượt), nhiều quá ghi (cả tổ)">
+                <label for="participation_count">Tổng số lượt:</label>
                 <input type="number" id="participation_count" name="participation_count" min="0">
             </div>
             <div class="form-group">
-                <label for="password">Mật khẩu:</label>
+                <label for="password">***Mật khẩu*** (Thầy cấp riêng cho TT):</label>
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit" id="submitButton">Gửi Dữ Liệu</button>
@@ -241,6 +333,13 @@
             "từ ngày 18/5/2026 đến 23/5/2026"
         ];
 
+        const teamPasswords = {
+            'TT1': 'totruong1',
+            'TT2': 'totruong2',
+            'TT3': 'totruong3',
+            'TT4': 'totruong4'
+        };
+
         function updateWeekDateRange() {
             const weekInput = document.getElementById('week').value;
             const weekDateRange = document.getElementById('week_date_range');
@@ -266,11 +365,16 @@
             });
         }
 
-        document.getElementById('teamForm').addEventListener('submit', function(e) {
+        document.getElementById('teamForm').addEventListener('submit', function (e) {
             e.preventDefault();
+            const team = document.getElementById('team').value;
+            if (!team) {
+                alert('Vui lòng chọn một tổ (TT1-TT4)!');
+                return;
+            }
             const password = document.getElementById('password').value;
-            if (password !== 'thayphongmath') {
-                alert('Mật khẩu không đúng! Vui lòng nhập lại.');
+            if (password !== teamPasswords[team]) {
+                alert(`Mật khẩu không đúng cho tổ ${team}! Vui lòng nhập lại.`);
                 return;
             }
 
@@ -279,29 +383,29 @@
             submitButton.disabled = true;
 
             const formData = new FormData(this);
-            const googleScriptAppUrl = 'https://script.google.com/macros/s/AKfycbzYRKWg-HaTWRLcoyGK-nYWlmZZk29IT92J7xgxY5yukHiUraHwv-v1UckNddsf7xAgrA/exec';
+            const googleScriptAppUrl = 'https://script.google.com/macros/s/AKfycbzfGYV1a4NPmEwEljHQsFYf8EF5ckPj7iBkdR8F1fZSGIhYyJeiYWA25fUsLH9a1kAegQ/exec/exec';
 
             fetch(googleScriptAppUrl, {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.result === 'success') {
-                    // Redirect to thankyou.html on success
-                    window.location.href = 'thankyou.html';
-                } else {
-                    alert('Có lỗi xảy ra khi gửi dữ liệu. Vui lòng thử lại.');
+                .then(response => response.json())
+                .then(data => {
+                    if (data.result === 'success') {
+                        window.location.href = 'thankyou.html';
+                    } else {
+                        alert('Có lỗi xảy ra khi gửi dữ liệu: ' + data.message);
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Gửi Dữ Liệu';
+                    }
+                })
+                .catch(error => {
+                    alert('Có lỗi xảy ra khi gửi dữ liệu: ' + error.message);
                     submitButton.disabled = false;
                     submitButton.textContent = 'Gửi Dữ Liệu';
-                }
-            })
-            .catch(error => {
-                alert('Có lỗi xảy ra khi gửi dữ liệu: ' + error.message);
-                submitButton.disabled = false;
-                submitButton.textContent = 'Gửi Dữ Liệu';
-            });
+                });
         });
     </script>
 </body>
+
 </html>
